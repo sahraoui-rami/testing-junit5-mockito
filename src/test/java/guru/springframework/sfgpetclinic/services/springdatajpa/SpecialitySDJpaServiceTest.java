@@ -28,6 +28,8 @@ class SpecialitySDJpaServiceTest {
     @Test
     void delete() {
         service.delete(new Speciality());
+
+        verify(specialtyRepository).delete(any(Speciality.class));
     }
 
     @Test
@@ -78,5 +80,6 @@ class SpecialitySDJpaServiceTest {
         assertThat(foundSpeciality).isNotNull().isEqualTo(speciality);
 
         verify(specialtyRepository).findById(1L);
+        verify(specialtyRepository).findById(anyLong());
     }
 }
